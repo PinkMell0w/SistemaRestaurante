@@ -1,0 +1,25 @@
+﻿<Window x:Class="ClienteSistemaRestaurante.Vistas.IniciarSesion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClienteSistemaRestaurante.Vistas"
+        mc:Ignorable="d"
+        Title="Iniciar Sesión" Height="650" Width="1000" Background="#F5EDE1"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Background="White">
+            <TextBlock Text="Sistema de Gestión de Restaurante" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,30" Foreground="#333333"/>
+
+            <TextBlock Text="Nombre de usuario:" FontWeight="SemiBold" Margin="20,0,20,5"/>
+            <TextBox x:Name="txtUsuario" Height="35" FontSize="14" Padding="5" Margin="40,0,40,15"/>
+
+            <TextBlock Text="Contraseña:" FontWeight="SemiBold" Margin="20,0,20,5"/>
+            <PasswordBox x:Name="txtPassword" Height="35" FontSize="14" Padding="5" Margin="40,0,40,25"/>
+
+            <Button Content="Entrar" Height="40" Background="#E36D2D" Foreground="White" FontSize="14" FontWeight="Bold" Margin="60,0,60,0" Cursor="Hand" Click="BtnIniciarSesion_Click"/>
+            
+            <TextBlock x:Name="txtError" Text="" Foreground="Red" FontSize="12" HorizontalAlignment="Center" Margin="0,15,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,72 @@
+﻿<Page x:Class="ClienteSistemaRestaurante.Vistas.Gerente.Inventario.Ingredientes.FormularioIngrediente"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClienteSistemaRestaurante.Vistas.Gerente.Inventario.Ingredientes"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="FormularioIngrediente" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="txtTitulo" Grid.Row="0" FontSize="24" FontWeight="Bold" Margin="10"/>
+
+        <Grid Grid.Row="1" Margin="0,0,0,25">
+            <StackPanel Grid.Column="0">
+                <TextBlock x:Name="txtNombreBlock" Text="Nombre*" FontSize="14" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBox x:Name="txtNombre" Text="Ej.: Tomates" FontSize="14" Padding="4" Foreground="Gray" HorizontalAlignment="Left" Width="300" GotFocus="LimpiarPlaceholder_Focus" LostFocus="RestaurarPlaceholder_LostFocus"/>
+                <TextBlock x:Name="txtNombreRestriccion" Text="Máximo 25 caracteres (sólo letras)" FontSize="8"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="0,0,0,25">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" HorizontalAlignment="Left" Width="100">
+                <TextBlock x:Name="txtCantidadBlock" Text="Cantidad*" FontSize="14" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBox x:Name="txtCantidad" Text="Ej.: 10" FontSize="14" Padding="4" Foreground="Gray" GotFocus="LimpiarPlaceholder_Focus" LostFocus="RestaurarPlaceholder_LostFocus"/>
+                <TextBlock x:Name="txtCantidadRestriccion" Text="Sólo números enteros" FontSize="8"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" HorizontalAlignment="Left" Width="300">
+                <TextBlock x:Name="txtMedidaBlock" Text="Medida*" FontSize="14" FontWeight="Bold" Margin="0,0,0,5"/>
+                <ComboBox x:Name="cbMedida" FontSize="14" Padding="4" HorizontalAlignment="Stretch">
+                    <ComboBoxItem Content="-- Seleccione una --" IsSelected="True"/>
+                    <ComboBoxItem Content="Unidades"/>
+                    <ComboBoxItem Content="Tazas"/>
+                    <ComboBoxItem Content="Gramos"/>
+                    <ComboBoxItem Content="Cucharadas"/>
+                    <ComboBoxItem Content="Cucharaditas"/>
+                    <ComboBoxItem Content="Onzas"/>
+                    <ComboBoxItem Content="Litros"/>
+                    <ComboBoxItem Content="Mililitros"/>
+                    <ComboBoxItem Content="Kilogramos"/>
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="Los campos marcados con * son obligatorios." FontSize="12" VerticalAlignment="Center"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Cancelar" Width="120" Height="40" Background="#FFD1D1D1" FontSize="14" FontWeight="Bold" Cursor="Hand" Click="BtnCancelar_Click"/>
+                <Button x:Name="btnGuardar" Width="120" Height="40" Background="#E36D2D" Foreground="White" FontSize="14" FontWeight="Bold" Margin="10,0,0,0" Cursor="Hand" Click="BtnGuardar_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

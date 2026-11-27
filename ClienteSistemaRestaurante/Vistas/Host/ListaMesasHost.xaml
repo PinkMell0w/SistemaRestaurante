@@ -1,0 +1,59 @@
+﻿<Window x:Class="ClienteSistemaRestaurante.Vistas.Host.ListaMesasHost"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClienteSistemaRestaurante.Vistas.Host"
+        mc:Ignorable="d"
+        Title="Sistema de Gestión de Restaurante" Height="650" Width="1000" Background="#F5EDE1"
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="20,15,20,10" VerticalAlignment="Center">
+            <TextBlock Text="Número de personas:" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,15,0"/>
+            <TextBox x:Name="txtFiltroPersonas" Width="250" Height="30" FontSize="14" Padding="5" VerticalContentAlignment="Center" TextChanged="TxtFiltroPersonas_TextChanged"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="20,0">
+            <ScrollViewer x:Name="scrollMesas" VerticalScrollBarVisibility="Auto">
+                <ItemsControl x:Name="icGruposMesas">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,0,0,15">
+                                <TextBlock Text="{Binding TituloGrupo}" FontSize="16" FontWeight="Bold" Margin="0,5,0,5"/>
+                                <Separator Background="#CCCCCC" Margin="0,0,0,10"/>
+
+                                <ItemsControl ItemsSource="{Binding Mesas}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border BorderBrush="#CCCCCC" BorderThickness="1" Background="White" Margin="0,0,0,8" CornerRadius="3" Padding="15,10">
+                                                <TextBlock FontSize="14">
+                                                    <Run Text="Mesa "/>
+                                                    <Run Text="{Binding numero}"/>
+                                                    <Run Text=" - "/>
+                                                    <Run Text="{Binding estado}"/>
+                                                </TextBlock>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <TextBlock x:Name="txtSinMesas" Text="Sin mesas disponibles" FontSize="16" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="20,10,20,15">
+            <Button Content="Cerrar sesión" Width="120" Height="35" Background="#FFB60707" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Click="BtnCerrarSesion_Click"/>
+            <TextBlock x:Name="txtError" Text="Error al cargar la lista de mesas." FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" Margin="10,0,0,0" Visibility="Hidden"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,61 @@
+﻿<Page x:Class="ClienteSistemaRestaurante.Vistas.Cocinero.DetallesOrden"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClienteSistemaRestaurante.Vistas.Cocinero"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="DetallesOrden" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="txtOrden" Grid.Row="0" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="icDetallesPlatillos">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="#666666" BorderThickness="1" Background="White" Width="140" Height="130" Margin="0,0,15,15" CornerRadius="2" Padding="10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Text="{Binding Platillo.nombre}" FontWeight="Bold" FontSize="14" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                <TextBlock Grid.Row="1" Text="{Binding Cantidad}" FontSize="12" HorizontalAlignment="Center" Foreground="#333333" Margin="0,0,0,2"/>
+
+                                <TextBlock Grid.Row="2" Text="{Binding Estado}" FontSize="12" HorizontalAlignment="Center" Foreground="#333333" Margin="0,0,0,2"/>
+
+                                <Button Grid.Row="3" Content="{Binding TextoBoton}" IsEnabled="{Binding EsBotonHabilitado}" Width="100" Height="32" Background="#D1D1D1" FontWeight="Bold" Cursor="Hand" VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="BtnAccionPlatillo_Click" Tag="{Binding}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <Separator Grid.Row="2" Margin="0,10,0,10" Background="#DDDDDD" Height="2"/>
+
+        <Grid Grid.Row="3" Margin="0,5,0,0">
+            <Button Content="Volver" Width="120" Height="40" Background="#FFD1D1D1" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" Cursor="Hand" Click="BtnVolver_Click"/>
+            <Button x:Name="btnServirOrden" Content="Servir orden" Width="130" Height="40" Background="#E36D2D" Foreground="Gray" HorizontalAlignment="Right" FontSize="14" FontWeight="Bold" IsEnabled="False" Cursor="Hand" Click="BtnServirOrden_Click"/>
+        </Grid>
+    </Grid>
+</Page>

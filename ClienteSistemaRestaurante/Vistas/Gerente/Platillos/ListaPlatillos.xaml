@@ -1,0 +1,53 @@
+﻿<Page x:Class="ClienteSistemaRestaurante.Vistas.Gerente.Platillos.ListaPlatillos"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClienteSistemaRestaurante.Vistas.Gerente.Platillos"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Consultar platillos" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Listado de Platillos" FontSize="24" FontWeight="Bold" Margin="10"/>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="icPlatillos">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="#DDDDDD" BorderThickness="1" Margin="0,0,0,10" CornerRadius="5" Padding="15,10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" VerticalAlignment="Center" FontSize="14">
+                                    <Run Text="{Binding nombre}" FontWeight="Normal"/>
+                                    <Run Text="$"/>
+                                    <Run Text="{Binding costo}"/>
+                                    <Run Text=" - "/>
+                                    <Run Text="{Binding Categoria.nombreCategoria}"/>
+                                </TextBlock>
+
+                                <Button Grid.Column="1" Content="Modificar" Margin="10,0" Padding="10,5" Background="#D1D1D1" FontWeight="Bold" BorderBrush="Transparent" Cursor="Hand" Click="BtnModificarPlatillo_Click" Tag="{Binding}"/>
+                                <Button Grid.Column="2" Content="Eliminar" Margin="10,0" Padding="10,5" Background="#EB2A2A" Foreground="White" FontWeight="Bold" BorderBrush="Transparent" Cursor="Hand" Click="BtnEliminarPlatillo_Click" Tag="{Binding}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,15,0,0">
+            <Button Content="Volver" Width="120" Height="40" Background="#FFD1D1D1" FontSize="14" FontWeight="Bold" Cursor="Hand" Click="BtnVolver_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
